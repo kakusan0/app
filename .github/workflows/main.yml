@@ -1,0 +1,17 @@
+on:
+  pull_request:
+    branches:
+    - main
+jobs:
+  test:
+    name: Test on node
+    runs-on: rockylinux
+    strategy:
+      matrix:
+        node_version: ['18.x', '20.x']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+    - name: npm install, build and test
+      run: |
+        npm install
